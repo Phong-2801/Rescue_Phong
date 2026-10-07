@@ -3,12 +3,30 @@
     "id": "scenario_ceo_phuong_hang",
     "title": "Minh bạch quỹ thiện nguyện và kỷ cương pháp chế mạng xã hội",
     "npcName": "CEO Nguyễn Phương Hằng (Bà Chủ Đại Nam)",
-    "source": ["III.1.b.phuong-thuc-thuc-hien-loi-ich", "II.2.a.hoan-thien-the-che-phat-trien"],
+    "source": [
+      "III.1.b.phuong-thuc-thuc-hien-loi-ich",
+      "II.2.a.hoan-thien-the-che-phat-trien"
+    ],
     "danger": 100,
     "turns": [
       {
         "prompt": "Tôi dùng livestream bóc trần mặt trái showbiz, đòi sao kê minh bạch hàng chục tỷ tiền từ thiện cứu trợ đồng bào lũ lụt. Tại sao tôi lại bị xử lý pháp luật về tội xúc phạm danh dự người khác theo Điều 331? Đâu là ranh giới thể chế đúng đắn?",
         "options": [
+          {
+            "text": "Cấm hoàn toàn mọi hoạt động livestream và chặn tất cả các nền tảng mạng xã hội tại Việt Nam",
+            "result": "backfire",
+            "danger": 50,
+            "calm": -40,
+            "minLevel": "cuuhovien",
+            "explain": "Biện pháp hành chính cực đoan ngăn cản sự phát triển của kinh tế số và quyền tiếp cận thông tin của nhân dân."
+          },
+          {
+            "text": "Buông lỏng quản lý, để mặc các bên tiếp tục livestream lăng mạ vu khống và kích động đám đông biểu tình",
+            "result": "backfire",
+            "danger": 40,
+            "calm": -30,
+            "explain": "Phá hủy kỷ cương thể chế (tr.213), biến không gian mạng thành nơi bạo lực ngôn từ làm bất ổn xã hội."
+          },
           {
             "text": "Xử lý nghiêm minh hành vi xúc phạm danh dự công dân đúng quy định pháp luật; đồng thời thanh tra toàn diện hoạt động thiện nguyện và ban hành Nghị định 93/2021/NĐ-CP chuẩn hóa quy chế mở tài khoản từ thiện minh bạch",
             "result": "super",
@@ -22,21 +40,6 @@
             "danger": -15,
             "calm": 5,
             "explain": "Không giải quyết được gốc rễ lỗ hổng pháp lý về vận động từ thiện và không răn đe được hành vi vi phạm trật tự mạng."
-          },
-          {
-            "text": "Buông lỏng quản lý, để mặc các bên tiếp tục livestream lăng mạ vu khống và kích động đám đông biểu tình",
-            "result": "backfire",
-            "danger": 40,
-            "calm": -30,
-            "explain": "Phá hủy kỷ cương thể chế (tr.213), biến không gian mạng thành nơi bạo lực ngôn từ làm bất ổn xã hội."
-          },
-          {
-            "text": "Cấm hoàn toàn mọi hoạt động livestream và chặn tất cả các nền tảng mạng xã hội tại Việt Nam",
-            "result": "backfire",
-            "danger": 50,
-            "calm": -40,
-            "minLevel": "cuuhovien",
-            "explain": "Biện pháp hành chính cực đoan ngăn cản sự phát triển của kinh tế số và quyền tiếp cận thông tin của nhân dân."
           }
         ]
       }
@@ -46,26 +49,15 @@
     "id": "scenario_hoai_linh_charity",
     "title": "Quản trị nguồn vốn xã hội và trách nhiệm ủy thác từ thiện",
     "npcName": "Nghệ Sĩ Hoài Linh & Vụ 14 Tỷ Cứu Trợ",
-    "source": ["III.1.b.phuong-thuc-thuc-hien-loi-ich", "III.1.b.mot-so-quan-he-loi-ich"],
+    "source": [
+      "III.1.b.phuong-thuc-thuc-hien-loi-ich",
+      "III.1.b.mot-so-quan-he-loi-ich"
+    ],
     "danger": 100,
     "turns": [
       {
         "prompt": "Tôi quyên góp được hơn 14,2 tỷ đồng từ các nhà hảo tâm để cứu trợ đồng bào lũ lụt miền Trung, nhưng vì bị bệnh xạ trị và dịch bệnh nên giữ trong tài khoản riêng chậm giải ngân hơn 6 tháng. Thể chế quản trị nguồn vốn từ thiện cần định hướng thế nào?",
         "options": [
-          {
-            "text": "Kết luận rõ ràng về dòng tiền, xử lý nghiêm trách nhiệm chậm giải ngân; thể chế hóa quy định cá nhân vận động từ thiện phải mở tài khoản riêng, công khai sao kê chi tiết và liên kết chặt chẽ với Mặt trận Tổ quốc hoặc Hội Chữ Thập Đỏ",
-            "result": "super",
-            "danger": -60,
-            "calm": 20,
-            "explain": "Đúng mục III.1.b tr.200, 213-214: Phương thức thực hiện lợi ích thông qua chính sách xã hội và tổ chức thiện nguyện phải dựa trên thể chế pháp lý chặt chẽ để bảo vệ niềm tin của nhân dân."
-          },
-          {
-            "text": "Yêu cầu nghệ sĩ nhanh chóng giải ngân hết số tiền còn lại trong vòng 1 tuần rồi đóng hồ sơ không truy cứu",
-            "result": "ok",
-            "danger": -10,
-            "calm": 0,
-            "explain": "Giải ngân vội vã dễ dẫn đến sai sót và không khôi phục được niềm tin của công chúng vào hoạt động thiện nguyện."
-          },
           {
             "text": "Cho phép các cá nhân tự do giữ tiền cứu trợ khẩn cấp nhiều năm trong tài khoản riêng mà không cần thông báo",
             "result": "backfire",
@@ -80,6 +72,20 @@
             "calm": -35,
             "minLevel": "cuuhovien",
             "explain": "Triệt tiêu tinh thần tương thân tương ái, truyền thống tốt đẹp 'lá lành đùm lá rách' của dân tộc."
+          },
+          {
+            "text": "Yêu cầu nghệ sĩ nhanh chóng giải ngân hết số tiền còn lại trong vòng 1 tuần rồi đóng hồ sơ không truy cứu",
+            "result": "ok",
+            "danger": -10,
+            "calm": 0,
+            "explain": "Giải ngân vội vã dễ dẫn đến sai sót và không khôi phục được niềm tin của công chúng vào hoạt động thiện nguyện."
+          },
+          {
+            "text": "Kết luận rõ ràng về dòng tiền, xử lý nghiêm trách nhiệm chậm giải ngân; thể chế hóa quy định cá nhân vận động từ thiện phải mở tài khoản riêng, công khai sao kê chi tiết và liên kết chặt chẽ với Mặt trận Tổ quốc hoặc Hội Chữ Thập Đỏ",
+            "result": "super",
+            "danger": -60,
+            "calm": 20,
+            "explain": "Đúng mục III.1.b tr.200, 213-214: Phương thức thực hiện lợi ích thông qua chính sách xã hội và tổ chức thiện nguyện phải dựa trên thể chế pháp lý chặt chẽ để bảo vệ niềm tin của nhân dân."
           }
         ]
       }
@@ -89,12 +95,30 @@
     "id": "scenario_quang_linh_kera",
     "title": "Trục lợi uy tín thiện nguyện và trách nhiệm KOL trong phiên mega-live",
     "npcName": "Quang Linh Vlogs (Mega-Live Kẹo Kera)",
-    "source": ["II.2.b", "III.1.b.mot-so-quan-he-loi-ich"],
+    "source": [
+      "II.2.b",
+      "III.1.b.mot-so-quan-he-loi-ich"
+    ],
     "danger": 100,
     "turns": [
       {
         "prompt": "Tôi là YouTuber làm nông nghiệp thiện nguyện tại châu Phi, được hàng triệu người tin yêu. Khi về nước, tôi tham gia phiên livestream bán kẹo Kera chốt hàng trăm ngàn đơn nhưng sản phẩm bị tố chất lượng không như công bố, thổi phồng công dụng. Tôi phân trần chỉ là người bán hộ, không chịu trách nhiệm chất lượng. Nhà điều hành thể chế xử lý ra sao?",
         "options": [
+          {
+            "text": "Cấm vĩnh viễn Quang Linh Vlogs quay video và tước bỏ mọi danh hiệu thiện nguyện của anh",
+            "result": "backfire",
+            "danger": 40,
+            "calm": -25,
+            "minLevel": "cuuhovien",
+            "explain": "Biện pháp cảm tính cực đoan, không phân định rạch ròi giữa đóng góp xã hội chân chính và sai phạm thương mại cụ thể."
+          },
+          {
+            "text": "Bảo vệ tuyệt đối Quang Linh vì những đóng góp thiện nguyện ở châu Phi, không cho phép cơ quan chức năng điều tra vụ kẹo Kera",
+            "result": "backfire",
+            "danger": 45,
+            "calm": -30,
+            "explain": "Đánh tráo khái niệm đạo đức và pháp quyền; biến người nổi tiếng thành 'vùng cấm' đứng trên pháp luật, làm xói mòn kỷ cương thể chế (tr.213)."
+          },
           {
             "text": "Thể chế hóa trách nhiệm KOL: Phân định rõ người có sức ảnh hưởng khi livestream bán hàng hưởng hoa hồng phải liên đới chịu trách nhiệm với người tiêu dùng; buộc Quang Linh và nhãn hàng cùng bồi thường cho khách hàng, đồng thời công khai xin lỗi và tạm đình chỉ hoạt động thương mại để kiểm toán",
             "result": "super",
@@ -108,21 +132,6 @@
             "danger": -10,
             "calm": 5,
             "explain": "Dung túng cho kẽ hở pháp lý: Các KOL sẽ tiếp tục mượn danh nghĩa bán hộ để chối bỏ trách nhiệm khi phân phối hàng kém chất lượng."
-          },
-          {
-            "text": "Bảo vệ tuyệt đối Quang Linh vì những đóng góp thiện nguyện ở châu Phi, không cho phép cơ quan chức năng điều tra vụ kẹo Kera",
-            "result": "backfire",
-            "danger": 45,
-            "calm": -30,
-            "explain": "Đánh tráo khái niệm đạo đức và pháp quyền; biến người nổi tiếng thành 'vùng cấm' đứng trên pháp luật, làm xói mòn kỷ cương thể chế (tr.213)."
-          },
-          {
-            "text": "Cấm vĩnh viễn Quang Linh Vlogs quay video và tước bỏ mọi danh hiệu thiện nguyện của anh",
-            "result": "backfire",
-            "danger": 40,
-            "calm": -25,
-            "minLevel": "cuuhovien",
-            "explain": "Biện pháp cảm tính cực đoan, không phân định rạch ròi giữa đóng góp xã hội chân chính và sai phạm thương mại cụ thể."
           }
         ]
       }
@@ -132,25 +141,29 @@
     "id": "scenario_thuy_tien_kera",
     "title": "Trách nhiệm liên đới của đại sứ thương hiệu và hoa hậu quảng bá sản phẩm",
     "npcName": "Hoa Hậu Thùy Tiên (Đại Sứ Kẹo Kera)",
-    "source": ["II.2.a.hoan-thien-the-che-ve-so", "III.1.b.mot-so-quan-he-loi-ich"],
+    "source": [
+      "II.2.a.hoan-thien-the-che-ve-so",
+      "III.1.b.mot-so-quan-he-loi-ich"
+    ],
     "danger": 100,
     "turns": [
       {
         "prompt": "Tôi là Hoa hậu Hòa bình Quốc tế, ký hợp đồng làm đại sứ hình ảnh cho kẹo Kera với thù lao tiền tỷ và xuất hiện trong các clip quảng cáo khen ngợi sản phẩm. Khi người tiêu dùng tố cáo kẹo Kera quảng cáo quá đà, thiếu kiểm định lâm sàng, tôi cho rằng mình chỉ là người mẫu quảng cáo theo kịch bản. Bạn đưa ra phán quyết thể chế gì?",
         "options": [
           {
+            "text": "Tước vương miện hoa hậu và cấm xuất cảnh đối với tất cả những người tham gia chiến dịch quảng cáo",
+            "result": "backfire",
+            "danger": 45,
+            "calm": -35,
+            "minLevel": "cuuhovien",
+            "explain": "Lạm dụng chế tài hành chính vượt quá quy định của pháp luật dân sự và thương mại."
+          },
+          {
             "text": "Ban hành Quy chuẩn Pháp lý Đại sứ Thương hiệu: Buộc đại sứ phải trực tiếp dùng thử và thẩm tra giấy phép kiểm nghiệm trước khi nhận hợp đồng; buộc bồi hoàn toàn bộ tiền cát-xê quảng cáo sai sự thật vào Quỹ Bảo vệ Người Tiêu dùng và công khai cảnh cáo trước công chúng",
             "result": "super",
             "danger": -60,
             "calm": 25,
             "explain": "Chuẩn mực giáo trình tr.193-194, 212: Thể chế thị trường hiện đại quy định trách nhiệm liên đới của chủ thể thụ hưởng giá trị thặng dư từ thương mại hóa hình ảnh cá nhân; bảo vệ giá trị sử dụng thực sự của hàng hóa đối với sức khỏe nhân dân."
-          },
-          {
-            "text": "Để hoa hậu đăng một bài xin lỗi ngắn trên mạng xã hội rồi tiếp tục các hợp đồng đại sứ nhãn hàng khác",
-            "result": "ok",
-            "danger": -15,
-            "calm": 0,
-            "explain": "Hình phạt mang tính hình thức, biến việc xin lỗi thành công thức tẩy trắng quen thuộc trong giới showbiz."
           },
           {
             "text": "Tuyên bố hoa hậu hoàn toàn vô can vì cô ấy không phải là kỹ sư hóa học hay nhà sản xuất kẹo",
@@ -160,12 +173,11 @@
             "explain": "Bỏ lọt trách nhiệm của người hưởng lợi lớn nhất từ niềm tin của công chúng, khuyến khích các nghệ sĩ nhận PR bừa bãi."
           },
           {
-            "text": "Tước vương miện hoa hậu và cấm xuất cảnh đối với tất cả những người tham gia chiến dịch quảng cáo",
-            "result": "backfire",
-            "danger": 45,
-            "calm": -35,
-            "minLevel": "cuuhovien",
-            "explain": "Lạm dụng chế tài hành chính vượt quá quy định của pháp luật dân sự và thương mại."
+            "text": "Để hoa hậu đăng một bài xin lỗi ngắn trên mạng xã hội rồi tiếp tục các hợp đồng đại sứ nhãn hàng khác",
+            "result": "ok",
+            "danger": -15,
+            "calm": 0,
+            "explain": "Hình phạt mang tính hình thức, biến việc xin lỗi thành công thức tẩy trắng quen thuộc trong giới showbiz."
           }
         ]
       }
@@ -175,26 +187,15 @@
     "id": "scenario_cuc_thue_so_boss",
     "title": "THANH TRA ĐẠI ÁN KẸO KERA & THUẾ LIVESTREAM MEGA-LIVE (TRÙM CUỐI THỂ CHẾ)",
     "npcName": "Cục Trưởng Thanh Tra Thị Trường & Thuế Số Kera",
-    "source": ["III.1.b.phuong-thuc-thuc-hien-loi-ich", "II.2.a.hoan-thien-the-che-phat-trien"],
+    "source": [
+      "III.1.b.phuong-thuc-thuc-hien-loi-ich",
+      "II.2.a.hoan-thien-the-che-phat-trien"
+    ],
     "danger": 140,
     "turns": [
       {
         "prompt": "GIAI ĐOẠN 1: Đại án Kẹo Kera phơi bày lỗ hổng khổng lồ: Doanh số một đêm livestream đạt hàng chục tỷ nhưng khai báo thuế gian lận, dùng hóa đơn đầu vào mập mờ, sản phẩm chưa đạt chuẩn đã tuồn ra thị trường nhờ sức mạnh KOL. Cơ quan quản lý Nhà nước mở đợt tổng thanh tra thể chế ra sao?",
         "options": [
-          {
-            "text": "Thanh tra liên ngành Y tế - Quản lý Thị trường - Cục Thuế: Thu hồi toàn bộ lô kẹo Kera kém chất lượng; truy thu 100% thuế GTGT và thuế TNCN phát sinh từ các phiên mega-live của nhãn hàng và các KOL liên quan kèm phạt nặng tội trốn thuế",
-            "result": "super",
-            "danger": -60,
-            "calm": 25,
-            "explain": "Đúng mục III.1.b tr.213-214: Nhà nước pháp quyền XHCN sử dụng đồng bộ công cụ thanh tra chất lượng và chính sách thuế để lập lại trật tự kỷ cương thị trường số."
-          },
-          {
-            "text": "Chỉ kiểm tra giấy phép kinh doanh của công ty phân phối mà không truy vết dòng tiền thuế của các phiên mega-live",
-            "result": "backfire",
-            "danger": 35,
-            "calm": -25,
-            "explain": "Bỏ lọt hàng chục tỷ đồng tiền thuế thu nhập cá nhân từ hoa hồng livestream của các ngôi sao mạng."
-          },
           {
             "text": "Thả nổi cho các nhãn hàng kẹo tự thỏa thuận đền bù với khách hàng rồi bỏ qua các sai phạm thuế",
             "result": "backfire",
@@ -203,12 +204,26 @@
             "explain": "Làm tê liệt quyền lực quản lý nhà nước, biến pháp luật thành công cụ thương lượng tư nhân."
           },
           {
+            "text": "Thanh tra liên ngành Y tế - Quản lý Thị trường - Cục Thuế: Thu hồi toàn bộ lô kẹo Kera kém chất lượng; truy thu 100% thuế GTGT và thuế TNCN phát sinh từ các phiên mega-live của nhãn hàng và các KOL liên quan kèm phạt nặng tội trốn thuế",
+            "result": "super",
+            "danger": -60,
+            "calm": 25,
+            "explain": "Đúng mục III.1.b tr.213-214: Nhà nước pháp quyền XHCN sử dụng đồng bộ công cụ thanh tra chất lượng và chính sách thuế để lập lại trật tự kỷ cương thị trường số."
+          },
+          {
             "text": "Cấm hoàn toàn việc kinh doanh kẹo và thực phẩm bổ sung qua mạng Internet",
             "result": "backfire",
             "danger": 50,
             "calm": -40,
             "minLevel": "cuuhovien",
             "explain": "Chính sách quản lý cấm đoán thô bạo làm bóp nghẹt ngành thương mại điện tử hiện đại."
+          },
+          {
+            "text": "Chỉ kiểm tra giấy phép kinh doanh của công ty phân phối mà không truy vết dòng tiền thuế của các phiên mega-live",
+            "result": "backfire",
+            "danger": 35,
+            "calm": -25,
+            "explain": "Bỏ lọt hàng chục tỷ đồng tiền thuế thu nhập cá nhân từ hoa hồng livestream của các ngôi sao mạng."
           }
         ]
       },
@@ -216,11 +231,12 @@
         "prompt": "GIAI ĐOẠN 2: Sau đại án Kẹo Kera, toàn bộ hàng chục ngàn tỷ đồng tiền thuế truy thu được từ kinh tế số và livestream cần được Nhà nước định hướng sử dụng ra sao để bảo đảm công bằng xã hội và phát triển bền vững?",
         "options": [
           {
-            "text": "Tái phân bổ nguồn thu thuế vào nâng cấp Viện Kiểm nghiệm An toàn Vệ sinh Thực phẩm Quốc gia, xây dựng hạ tầng y tế cơ sở chăm sóc trẻ em nghèo và lập Quỹ Trợ cấp An sinh Xã hội; bảo đảm mục tiêu phát triển kinh tế đi đôi với tiến bộ và công bằng xã hội!",
-            "result": "super",
-            "danger": -90,
-            "calm": 35,
-            "explain": "CHIẾN THẮNG TUYỆT ĐỐI! BẠN ĐÃ HOÀN THÀNH XUẤT SẮC SỨ MỆNH TRỌNG TÀI THỂ CHẾ! Bạn đã vận dụng hoàn hảo lý luận Mác - Lênin (Tr.213-214): Thể chế phân phối lại qua thuế là công cụ tối cao của Nhà nước định hướng XHCN nhằm điều hòa lợi ích giai cấp, bảo vệ sức khỏe nhân dân và kiến tạo xã hội văn minh!"
+            "text": "Cắt giảm toàn bộ ngân sách y tế để tập trung phát triển các sàn thương mại điện tử tư nhân",
+            "result": "backfire",
+            "danger": 45,
+            "calm": -35,
+            "minLevel": "cuuhovien",
+            "explain": "Hi sinh an sinh xã hội vì mục tiêu lợi nhuận tư bản thuần túy, đi ngược lại bản chất ưu việt của XHCN."
           },
           {
             "text": "Giữ nguyên nguồn tiền trong ngân khố mà không đầu tư kiểm soát chất lượng an toàn thực phẩm",
@@ -237,12 +253,11 @@
             "explain": "Hành vi cấu kết nhóm lợi ích tiêu cực, tước đoạt tài sản công của toàn thể nhân dân."
           },
           {
-            "text": "Cắt giảm toàn bộ ngân sách y tế để tập trung phát triển các sàn thương mại điện tử tư nhân",
-            "result": "backfire",
-            "danger": 45,
-            "calm": -35,
-            "minLevel": "cuuhovien",
-            "explain": "Hi sinh an sinh xã hội vì mục tiêu lợi nhuận tư bản thuần túy, đi ngược lại bản chất ưu việt của XHCN."
+            "text": "Tái phân bổ nguồn thu thuế vào nâng cấp Viện Kiểm nghiệm An toàn Vệ sinh Thực phẩm Quốc gia, xây dựng hạ tầng y tế cơ sở chăm sóc trẻ em nghèo và lập Quỹ Trợ cấp An sinh Xã hội; bảo đảm mục tiêu phát triển kinh tế đi đôi với tiến bộ và công bằng xã hội!",
+            "result": "super",
+            "danger": -90,
+            "calm": 35,
+            "explain": "CHIẾN THẮNG TUYỆT ĐỐI! BẠN ĐÃ HOÀN THÀNH XUẤT SẮC SỨ MỆNH TRỌNG TÀI THỂ CHẾ! Bạn đã vận dụng hoàn hảo lý luận Mác - Lênin (Tr.213-214): Thể chế phân phối lại qua thuế là công cụ tối cao của Nhà nước định hướng XHCN nhằm điều hòa lợi ích giai cấp, bảo vệ sức khỏe nhân dân và kiến tạo xã hội văn minh!"
           }
         ]
       }

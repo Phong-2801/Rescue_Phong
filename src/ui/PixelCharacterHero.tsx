@@ -71,9 +71,10 @@ export const PixelCharacterHero: React.FC<PixelCharacterHeroProps> = ({
       ctx.clearRect(0, 0, 16, 16);
       ctx.drawImage(img, 0, 0, 16, 16);
 
-      // Đọc dữ liệu điểm ảnh (ImageData) để tùy chỉnh pixel
-      const imgData = ctx.getImageData(0, 0, 16, 16);
-      const data = imgData.data;
+      // Chỉ can thiệp điểm ảnh (ImageData) khi người chơi chủ động tùy biến ngoại hình sâu
+      if (appearance.isCustomized) {
+        const imgData = ctx.getImageData(0, 0, 16, 16);
+        const data = imgData.data;
 
       const setPixel = (x: number, y: number, r: number, g: number, b: number, a = 255) => {
         if (x < 0 || x >= 16 || y < 0 || y >= 16) return;
@@ -312,7 +313,8 @@ export const PixelCharacterHero: React.FC<PixelCharacterHeroProps> = ({
         setPixel(8, 12, 225, 29, 72);
       }
 
-      ctx.putImageData(imgData, 0, 0);
+        ctx.putImageData(imgData, 0, 0);
+      }
     };
   }, [appearance, baseSkin, tileFile]);
 

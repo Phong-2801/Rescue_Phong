@@ -3,27 +3,14 @@ import {
   Settings,
   BookOpen,
   User,
-  Sparkles,
   ChevronLeft,
   ChevronRight,
-  Dices,
-  Edit2,
-  Check,
   Star,
-  Award,
-  Flame,
-  Volume2,
-  VolumeX,
   Maximize2,
   Minimize2,
-  TrendingUp,
   Coins,
-  Shield,
-  Gift,
-  HelpCircle,
-  ArrowRight,
 } from 'lucide-react';
-import { GameProgress } from '../systems/progress';
+import { GameProgress, DEFAULT_APPEARANCE } from '../systems/progress';
 import { ARCHETYPES } from './CharacterCreationModal';
 import { PixelCharacterHero } from './PixelCharacterHero';
 import { VietnamEconomicPieCard } from './VietnamEconomicPieCard';
@@ -42,29 +29,6 @@ interface LobbyViewProps {
   }) => void;
 }
 
-const VIETNAM_NAMES = [
-  'Hoàng Phong',
-  'Minh Anh',
-  'Bảo Nam',
-  'Hải Đăng',
-  'Nhật Minh',
-  'Gia Huy',
-  'Đăng Khoa',
-  'Phương Anh',
-  'Khánh Linh',
-  'Tuệ Lâm',
-  'Bảo Ngọc',
-  'Thùy Chi',
-  'Hà My',
-  'Quốc Bảo',
-  'Thành Long',
-  'Hữu Phước',
-  'Quang Dũng',
-  'Thanh Trúc',
-  'Mỹ Duyên',
-  'Ngọc Hân',
-];
-
 export const LobbyView: React.FC<LobbyViewProps> = ({
   progress,
   totalStars,
@@ -74,17 +38,21 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
   onUpdatePlayer,
 }) => {
   const [currentSkinIndex, setCurrentSkinIndex] = useState(progress.playerSkin ?? 0);
-  const [isEditingName, setIsEditingName] = useState(false);
-  const [nameInput, setNameInput] = useState(progress.playerName || 'Nhà Cải Cách');
-  const [economyCoins, setEconomyCoins] = useState(50000000); // 50 Triệu VNĐ vốn ban đầu
+  const [economyCoins] = useState(50000000); // 50 Triệu VNĐ vốn ban đầu
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Tự động đồng bộ skin khi người chơi chọn xong từ CharacterCreationModal
+  useEffect(() => {
+    if (progress.playerSkin !== undefined && progress.playerSkin !== currentSkinIndex) {
+      setCurrentSkinIndex(progress.playerSkin);
+    }
+  }, [progress.playerSkin]);
 
   const currentArchetype = ARCHETYPES[currentSkinIndex] || ARCHETYPES[0];
 
-  // Lắng nghe phím SPACE trên bàn phím để vào chọn tướng & avatar ngay lập tức (cả chuột và SPACE)
+  // Lắng nghe phím SPACE trên bàn phím để vào chọn tướng & avatar ngay lập tức
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Nếu đang gõ tên trong ô input hoặc textarea thì không can thiệp phím cách
       const target = e.target as HTMLElement | null;
       if (
         target &&
@@ -117,11 +85,13 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
     onUpdatePlayer({
       playerSkin: nextIdx,
       appearance: {
+        ...DEFAULT_APPEARANCE,
         ...(progress.appearance || {}),
         baseSkin: nextIdx,
         gender: arch.gender,
         outfitColor: arch.outfitColor,
-      } as any,
+        isCustomized: false,
+      },
     });
   };
 
@@ -133,29 +103,14 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
     onUpdatePlayer({
       playerSkin: nextIdx,
       appearance: {
+        ...DEFAULT_APPEARANCE,
         ...(progress.appearance || {}),
         baseSkin: nextIdx,
         gender: arch.gender,
         outfitColor: arch.outfitColor,
-      } as any,
+        isCustomized: false,
+      },
     });
-  };
-
-  // Đổi tên ngẫu nhiên (tuyệt đối không lấy Tuấn Kiệt)
-  const handleRandomName = () => {
-    sound.playClick();
-    const validNames = VIETNAM_NAMES.filter((n) => n !== 'Tuấn Kiệt' && n !== nameInput);
-    const randomPick = validNames[Math.floor(Math.random() * validNames.length)] || 'Hoàng Phong';
-    setNameInput(randomPick);
-    onUpdatePlayer({ playerName: randomPick });
-  };
-
-  // Lưu tên khi gõ xong
-  const handleSaveName = () => {
-    const clean = nameInput.trim();
-    if (!clean) return;
-    setIsEditingName(false);
-    onUpdatePlayer({ playerName: clean });
   };
 
   // Toàn màn hình
@@ -319,21 +274,21 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
           </div>
         </div>
 
-        {/* NÚT PLAY XANH LÁ TRÒN TO (BẤM ĐỂ CHỌN TƯỚNG & CHỈNH AVATAR) */}
+        {/* NÚT PLAY XANH LÁ TRÒN TO (BẤM ĐỂ BẮT ĐẦU VÀO BẢN ĐỒ THÀNH PHỐ) */}
         <div className="flex items-center gap-2 sm:gap-3">
           <button
             type="button"
             onClick={() => {
               sound.playClick();
-              onOpenCharacterCreation();
+              onStartGame('hub');
             }}
-            title="Bấm để sang bước chọn tướng & chỉnh avatar!"
+            title="Bắt đầu vào game (Bản Đồ Thành Phố)!"
             className="group relative flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
           >
             {/* Vòng sáng nhấp nháy thu hút ánh nhìn */}
             <div className="absolute inset-0 rounded-full bg-emerald-500/40 blur-md group-hover:bg-emerald-400/60 animate-ping" style={{ animationDuration: '2.5s' }} />
 
-            {/* Nút tròn màu xanh lá cây rực rỡ như ảnh 1 */}
+            {/* Nút tròn màu xanh lá cây rực rỡ */}
             <div className="relative w-11 h-11 sm:w-16 sm:h-16 rounded-full bg-gradient-to-b from-lime-400 via-emerald-500 to-green-800 border-3 sm:border-4 border-lime-200 shadow-[0_4px_25px_rgba(34,197,94,0.8)] flex items-center justify-center group-hover:scale-105 transition-transform">
               <div className="w-0 h-0 border-t-[8px] sm:border-t-[12px] border-t-transparent border-b-[8px] sm:border-b-[12px] border-b-transparent border-l-[14px] sm:border-l-[20px] border-l-white ml-1 filter drop-shadow" />
             </div>
@@ -377,73 +332,10 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
       </header>
 
       {/* ======================================================== */}
-      {/* 2. KHU VỰC THÂN TRUNG TÂM: 3 CỘT (TRÁI - GIỮA - PHẢI) */}
+      {/* 2. KHU VỰC THÂN TRUNG TÂM: SÂN KHẤU NHÂN VẬT & BÁNH KINH TẾ */}
       {/* ======================================================== */}
       <main className="relative z-20 flex-1 w-full max-w-7xl mx-auto px-3 sm:px-6 py-2 flex items-center justify-between gap-3 sm:gap-4 shrink-0">
-        {/* ---------------------------------------------------- */}
-        {/* CỘT TRÁI: VŨ KHÍ LÝ LUẬN & CHỈ SỐ SINH TỒN (NHƯ ẢNH 1) */}
-        {/* ---------------------------------------------------- */}
-        <div className="flex flex-col gap-2.5 sm:gap-3 shrink-0 z-20">
-          {/* THẺ SÁCH "TƯ BẢN LUẬN" (TƯƠNG ĐƯƠNG SÚNG SVD BASIC Ở ẢNH 1) */}
-          <div className="relative bg-slate-900/95 border-2 border-slate-700 hover:border-amber-400 p-2.5 sm:p-3 rounded-2xl shadow-2xl w-36 sm:w-48 backdrop-blur-md group transition-all">
-            {/* Bong bóng mũi tên chỉ về phía nhân vật */}
-            <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[10px] border-l-slate-700 group-hover:border-l-amber-400 transition-colors" />
-
-            <div className="flex flex-col items-center text-center">
-              {/* Ảnh cuốn sách Tư Bản Luận với hào quang đỏ vàng */}
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br from-red-950 via-red-900 to-amber-950 border-2 border-amber-400/60 flex items-center justify-center p-2 shadow-inner my-1">
-                <span className="text-3xl sm:text-4xl filter drop-shadow">📕</span>
-                <span className="absolute bottom-1 right-1 text-[9px] bg-red-600 text-amber-200 px-1 rounded font-black border border-amber-400">
-                  VOL 1
-                </span>
-              </div>
-
-              <span className="text-[10px] sm:text-xs font-black text-amber-300 uppercase tracking-wider mt-1 truncate w-full">
-                TƯ BẢN LUẬN
-              </span>
-              <span className="text-[9px] text-slate-400 font-bold">
-                Vũ Khí Lý Luận Cơ Bản
-              </span>
-            </div>
-          </div>
-
-          {/* CHỈ SỐ SỨC SỐNG HP: GIỌT MÁU ĐỎ 100 (NHƯ ẢNH 1) */}
-          <div className="flex items-center gap-2 bg-slate-900/90 border-2 border-slate-700 px-3 py-1.5 rounded-xl shadow-lg w-32 sm:w-36">
-            <div className="w-6 h-6 rounded-full bg-rose-600/30 border border-rose-500 flex items-center justify-center text-rose-500 font-black text-sm">
-              🩸
-            </div>
-            <div className="flex flex-col leading-none">
-              <span className="text-xs sm:text-sm font-black text-rose-400">100 / 100</span>
-              <span className="text-[8px] text-slate-400 font-bold uppercase">SỨC SỐNG</span>
-            </div>
-          </div>
-
-          {/* CHỈ SỐ LƯỢT GIẢI CỨU: ĐỒNG HỒ 3 (NHƯ ẢNH 1) */}
-          <div className="flex items-center gap-2 bg-slate-900/90 border-2 border-slate-700 px-3 py-1.5 rounded-xl shadow-lg w-32 sm:w-36">
-            <div className="w-6 h-6 rounded-full bg-cyan-600/30 border border-cyan-500 flex items-center justify-center text-cyan-400 font-black text-sm">
-              ⏱️
-            </div>
-            <div className="flex flex-col leading-none">
-              <span className="text-xs sm:text-sm font-black text-cyan-300">3 LƯỢT</span>
-              <span className="text-[8px] text-slate-400 font-bold uppercase">CƠ HỘI CỨU</span>
-            </div>
-          </div>
-
-          {/* KỸ NĂNG HUY HIỆU ĐOÀN x12 (NHƯ QUẢ LỰU ĐẠN x12 Ở ẢNH 1) */}
-          <div className="flex items-center gap-2 bg-slate-900/90 border-2 border-slate-700 px-3 py-1.5 rounded-xl shadow-lg w-32 sm:w-36">
-            <div className="w-6 h-6 rounded-lg bg-emerald-600/30 border border-emerald-500 flex items-center justify-center text-emerald-400 font-black text-sm">
-              ⭐
-            </div>
-            <div className="flex flex-col leading-none">
-              <span className="text-xs sm:text-sm font-black text-emerald-300">x12</span>
-              <span className="text-[8px] text-slate-400 font-bold uppercase">LUẬN ĐIỂM</span>
-            </div>
-          </div>
-        </div>
-
-        {/* ---------------------------------------------------- */}
-        {/* CỘT GIỮA: SÂN KHẤU NHÂN VẬT PIXEL ART (ẢNH 2) & ĐIỀU HƯỚNG */}
-        {/* ---------------------------------------------------- */}
+        {/* SÂN KHẤU NHÂN VẬT PIXEL ART & ĐIỀU HƯỚNG TƯỚNG (CĂN GIỮA) */}
         <div className="relative flex-1 flex flex-col items-center justify-center py-2 z-20">
           <div className="relative flex items-center justify-center gap-4 sm:gap-8">
             {/* Nút chuyển nhân vật trước đó bên trái (<) */}
@@ -451,17 +343,24 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
               type="button"
               onClick={handlePrevHero}
               title="Nhân vật trước"
-              className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-slate-900/90 hover:bg-slate-800 border-2 border-amber-400/80 text-amber-300 flex items-center justify-center shadow-2xl active:scale-90 transition-all cursor-pointer z-30"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 hover:bg-slate-800 border-2 border-amber-400/80 text-amber-300 flex items-center justify-center shadow-2xl active:scale-90 transition-all cursor-pointer z-30 hover:border-amber-300"
             >
-              <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
+              <ChevronLeft className="w-6 h-6" />
             </button>
 
-            {/* Render Nhân vật Pixel Art y hệt Ảnh 2 với Hộp Tên Vàng & Mũi Tên Đỏ */}
+            {/* Render Nhân vật Pixel Art chuẩn xác theo Archetype đã chọn */}
             <div className="relative flex flex-col items-center">
               <PixelCharacterHero
-                appearance={progress.appearance}
-                size={160}
-                playerName={progress.playerName}
+                appearance={{
+                  ...DEFAULT_APPEARANCE,
+                  ...(progress.appearance || {}),
+                  baseSkin: currentSkinIndex,
+                  gender: currentArchetype.gender,
+                  outfitColor: currentArchetype.outfitColor,
+                  isCustomized: progress.appearance?.isCustomized ?? false,
+                }}
+                size={170}
+                playerName={currentArchetype.title}
                 showNameTag={true}
                 showShadow={true}
                 showPrompt={true}
@@ -478,120 +377,48 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
               type="button"
               onClick={handleNextHero}
               title="Nhân vật kế tiếp"
-              className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-slate-900/90 hover:bg-slate-800 border-2 border-amber-400/80 text-amber-300 flex items-center justify-center shadow-2xl active:scale-90 transition-all cursor-pointer z-30"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 hover:bg-slate-800 border-2 border-amber-400/80 text-amber-300 flex items-center justify-center shadow-2xl active:scale-90 transition-all cursor-pointer z-30 hover:border-amber-300"
             >
-              <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
+              <ChevronRight className="w-6 h-6" />
             </button>
           </div>
         </div>
 
-        {/* ---------------------------------------------------- */}
-        {/* CỘT PHẢI: CHIẾC BÁNH KINH TẾ VIỆT NAM (THAY THẾ TOÀN BỘ CÁC HÒM THỊ TRƯỜNG, VIỆN TRỢ, KHO BÁU XHCN) */}
-        {/* ---------------------------------------------------- */}
+        {/* CỘT PHẢI: CHIẾC BÁNH KINH TẾ VIỆT NAM */}
         <div className="shrink-0 z-20 flex flex-col items-center">
           <VietnamEconomicPieCard />
         </div>
       </main>
 
       {/* ======================================================== */}
-      {/* 3. THANH ĐIỀU KHIỂN DƯỚI CÙNG (BOTTOM HERO BAR NHƯ ẢNH 1) */}
+      {/* 3. THANH THÔNG TIN DƯỚI CÙNG (GỌN GÀNG, ĐÃ XÓA VÙNG KHOANH TRẮNG) */}
       {/* ======================================================== */}
       <footer
-        className="relative z-30 px-3 sm:px-6 py-2.5 bg-slate-950/90 border-t border-amber-500/20 backdrop-blur-md flex flex-wrap items-center justify-between gap-3 shrink-0"
+        className="relative z-30 px-3 sm:px-6 py-2.5 bg-slate-950/90 border-t border-amber-500/20 backdrop-blur-md flex items-center justify-between gap-3 shrink-0"
         style={{
           paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))',
           paddingLeft: 'max(0.75rem, env(safe-area-inset-left))',
           paddingRight: 'max(0.75rem, env(safe-area-inset-right))',
         }}
       >
-        {/* Phiên bản game góc trái dưới cùng (như v1.1.0 ở ảnh 1) */}
-        <div className="hidden md:flex flex-col text-[10px] text-slate-400 font-mono">
+        {/* Phiên bản game góc trái dưới cùng */}
+        <div className="flex flex-col text-[10px] text-slate-400 font-mono">
           <span className="font-bold text-amber-400">v1.2.0 • KINH TẾ CHÍNH TRỊ VN • NHÓM 2</span>
           <span>© Bản quyền Học Viện Cải Cách</span>
         </div>
 
-        {/* THANH ĐIỀU KHIỂN HERO & CHỌN TÊN (Y HỆT HỘP CHEEZIT Ở ẢNH 1) */}
-        <div className="flex items-center justify-center gap-2 sm:gap-3 mx-auto">
-          {/* Nút đỏ mũi tên trái (<) */}
-          <button
-            type="button"
-            onClick={handlePrevHero}
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-b from-rose-600 to-rose-900 border-2 border-rose-400 text-rose-100 flex items-center justify-center font-black text-lg active:scale-95 shadow-lg cursor-pointer"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-
-          {/* Hộp thông tin nhân vật chính: Cấp độ, Tên tự chọn, Thanh EXP */}
-          <div className="bg-slate-900 border-2 border-slate-700 px-3 py-1.5 sm:px-5 sm:py-2 rounded-2xl shadow-2xl flex flex-col items-center min-w-[220px] sm:min-w-[280px]">
-            {/* Chức danh & Cấp độ */}
-            <div className="flex items-center gap-1.5 text-xs text-amber-300 font-black uppercase tracking-wider mb-1">
-              <span>👁️ {currentArchetype.title}</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/20 border border-amber-400 text-amber-300">
-                LVL 1
-              </span>
-            </div>
-
-            {/* Ô TỰ DO CHỈNH TÊN NGAY TRÊN SẢNH CHỜ (KHÔNG ÉP TUẤN KIỆT) */}
-            <div className="flex items-center gap-1.5 my-1 bg-slate-950/90 px-2.5 py-1 rounded-xl border-2 border-amber-400/80 focus-within:border-amber-300 shadow-inner w-full max-w-[250px]">
-              <span className="text-[10px] sm:text-xs font-black text-amber-400 whitespace-nowrap">Tên:</span>
-              <input
-                type="text"
-                value={nameInput}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  setNameInput(val);
-                  onUpdatePlayer({ playerName: val.trim() || 'Nhà Cải Cách' });
-                }}
-                maxLength={20}
-                placeholder="Nhập tên của bạn..."
-                className="flex-1 bg-transparent border-none text-xs sm:text-sm font-black text-amber-100 focus:outline-none text-center"
-              />
-              <button
-                type="button"
-                onClick={handleRandomName}
-                title="Đổi tên ngẫu nhiên (không lấy Tuấn Kiệt)"
-                className="text-amber-400 hover:text-amber-200 cursor-pointer p-0.5 transition-transform hover:rotate-180 duration-300"
-              >
-                <Dices className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Thanh Máu / EXP Xanh Lá Rực Rỡ 360 (y hệt ảnh 1) */}
-            <div className="w-full h-3 sm:h-3.5 bg-slate-950 rounded-full border border-slate-700 overflow-hidden relative mt-1 flex items-center justify-center">
-              <div
-                className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-lime-400 to-emerald-500 shadow-sm"
-                style={{ width: '72%' }}
-              />
-              <span className="relative z-10 text-[9px] sm:text-[10px] font-black text-slate-950 tracking-wider">
-                360 / 500 EXP
-              </span>
-            </div>
-          </div>
-
-          {/* Nút đỏ mũi tên phải (>) */}
-          <button
-            type="button"
-            onClick={handleNextHero}
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-b from-rose-600 to-rose-900 border-2 border-rose-400 text-rose-100 flex items-center justify-center font-black text-lg active:scale-95 shadow-lg cursor-pointer"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </div>
-
-        {/* NÚT MŨI TÊN CHÍNH TIẾP TỤC: SANG MÀN HÌNH CHỌN TƯỚNG & AVATAR (ẢNH 1 STYLE) */}
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => {
-              sound.playClick();
-              onOpenCharacterCreation();
-            }}
-            className="px-4 py-2 sm:px-6 sm:py-2.5 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-rose-500 hover:from-amber-300 hover:to-rose-400 border-2 border-amber-300 text-slate-950 font-black text-xs sm:text-sm flex items-center gap-2 shadow-[0_0_25px_rgba(251,191,36,0.6)] active:scale-95 transition-all cursor-pointer animate-pulse"
-            title="Ấn mũi tên để sang màn hình chọn tướng & chỉnh avatar"
-          >
-            <span>CHỌN TƯỚNG & AVATAR</span>
-            <ArrowRight className="w-5 h-5 stroke-[3]" />
-          </button>
+        {/* Hướng dẫn phím tắt */}
+        <div className="text-[11px] text-slate-400 font-medium flex items-center gap-2">
+          <span className="hidden sm:inline text-slate-500">Phím tắt:</span>
+          <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-amber-300 font-mono text-[10px] font-bold">
+            SPACE
+          </span>
+          <span className="text-slate-400">Chỉnh Avatar</span>
+          <span className="text-slate-600">•</span>
+          <span className="px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 font-mono text-[10px] font-bold">
+            PLAY ▶
+          </span>
+          <span className="text-emerald-400 font-bold">Vào Bản Đồ</span>
         </div>
       </footer>
 

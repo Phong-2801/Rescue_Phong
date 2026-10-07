@@ -3,18 +3,22 @@
     "id": "scenario_jack_j97",
     "title": "Hợp đồng độc quyền và bản quyền đứa con tinh thần",
     "npcName": "Ca Sĩ Jack (J97)",
-    "source": ["III.1.b.mot-so-quan-he-loi-ich", "II.2.a.hoan-thien-the-che-ve-so"],
+    "source": [
+      "III.1.b.mot-so-quan-he-loi-ich",
+      "II.2.a.hoan-thien-the-che-ve-so"
+    ],
     "danger": 100,
     "turns": [
       {
         "prompt": "Tôi bị công ty ICM giữ toàn bộ doanh thu nhạc số, giữ quyền quản trị kênh YouTube và cấm biểu diễn các bài hát hit do chính tôi sáng tác ('Sóng Gió', 'Bạc Phận'). Tôi phải làm việc kiệt sức nhập viện và ra đi với hai bàn tay trắng. Bạn sẽ xử lý mâu thuẫn này theo thể chế nào?",
         "options": [
           {
-            "text": "Tuyên hủy các điều khoản hợp đồng nô dịch vi phạm Luật Lao động; công nhận quyền tác giả không thể chuyển nhượng của nghệ sĩ sáng tác và ban hành Bộ Quy tắc Chuẩn mực Hợp đồng Quản lý Nghệ sĩ",
-            "result": "super",
-            "danger": -60,
-            "calm": 20,
-            "explain": "Đúng tinh thần giáo trình tr.207-208: Tiền công là điều kiện tái sản xuất sức lao động; pháp luật phải bảo vệ người lao động yếu thế trước sự bóc lột giá trị thặng dư của tư bản giải trí."
+            "text": "Cho phép công ty quản lý giữ mã số thuế cá nhân và quyền sở hữu độc quyền đối với mọi bài hát sáng tác trong tương lai",
+            "result": "backfire",
+            "danger": 45,
+            "calm": -35,
+            "minLevel": "cuuhovien",
+            "explain": "Biến quan hệ lao động thành sự nô dịch thân thể và tinh thần, vi phạm nghiêm trọng Hiến pháp và pháp luật lao động Việt Nam."
           },
           {
             "text": "Khuyên Jack chấp nhận hòa giải riêng tư và đồng ý tỷ lệ chia doanh thu 50/50 mà không can thiệp vào các điều khoản độc quyền",
@@ -24,19 +28,18 @@
             "explain": "Chỉ là giải pháp tạm thời, chưa giải quyết được tận gốc bất bình đẳng thể chế trong hợp đồng lao động độc quyền."
           },
           {
+            "text": "Tuyên hủy các điều khoản hợp đồng nô dịch vi phạm Luật Lao động; công nhận quyền tác giả không thể chuyển nhượng của nghệ sĩ sáng tác và ban hành Bộ Quy tắc Chuẩn mực Hợp đồng Quản lý Nghệ sĩ",
+            "result": "super",
+            "danger": -60,
+            "calm": 20,
+            "explain": "Đúng tinh thần giáo trình tr.207-208: Tiền công là điều kiện tái sản xuất sức lao động; pháp luật phải bảo vệ người lao động yếu thế trước sự bóc lột giá trị thặng dư của tư bản giải trí."
+          },
+          {
             "text": "Đứng về phía công ty ICM, buộc Jack phải nộp phạt 10 tỷ đồng vì tự ý bỏ diễn và tịch thu quyền biểu diễn vĩnh viễn",
             "result": "backfire",
             "danger": 40,
             "calm": -30,
             "explain": "Bênh chủ tư bản cực đoan, vi phạm quyền con người và tước đoạt phương tiện tái sản xuất sức lao động sáng tạo của nghệ sĩ."
-          },
-          {
-            "text": "Cho phép công ty quản lý giữ mã số thuế cá nhân và quyền sở hữu độc quyền đối với mọi bài hát sáng tác trong tương lai",
-            "result": "backfire",
-            "danger": 45,
-            "calm": -35,
-            "minLevel": "cuuhovien",
-            "explain": "Biến quan hệ lao động thành sự nô dịch thân thể và tinh thần, vi phạm nghiêm trọng Hiến pháp và pháp luật lao động Việt Nam."
           }
         ]
       }
@@ -46,18 +49,22 @@
     "id": "scenario_vinfast_pham_nhat_vuong",
     "title": "Đột phá công nghệ xe điện Net Zero và chủ quyền công nghiệp",
     "npcName": "Tỷ Phú Phạm Nhật Vượng (VinFast)",
-    "source": ["II.2.a.hoan-thien-the-che-phat-trien", "II.2.c"],
+    "source": [
+      "II.2.a.hoan-thien-the-che-phat-trien",
+      "II.2.c"
+    ],
     "danger": 100,
     "turns": [
       {
         "prompt": "VinFast dồn hơn 12 tỷ USD vào R&D xe điện thông minh, làm chủ pin và mạng lưới trạm sạc V-GREEN, nhưng đang đối mặt cuộc chiến phá giá của xe điện ngoại bang và rào cản tiêu chuẩn xanh quốc tế. Đâu là quyết sách thể chế căn cơ của Nhà nước?",
         "options": [
           {
-            "text": "Ban hành Chiến lược Thể chế Xe điện Xanh: Miễn 100% lệ phí trước bạ, quy hoạch mạng lưới trạm sạc vào công trình thiết yếu công cộng, hỗ trợ R&D công nghệ pin và dựng hàng rào tiêu chuẩn kỹ thuật xanh",
-            "result": "super",
-            "danger": -60,
-            "calm": 25,
-            "explain": "Đúng định hướng giáo trình tr.191-192, 195: Thể chế KTTT định hướng XHCN chủ động kiến tạo thị trường mới, gắn kết tăng trưởng kinh tế với tự chủ công nghệ và phát triển xanh bền vững."
+            "text": "Dùng mệnh lệnh hành chính ép buộc cấm hoàn toàn xe xăng ngay trong tuần tới để bắt buộc người dân đổi sang xe điện",
+            "result": "backfire",
+            "danger": 40,
+            "calm": -35,
+            "minLevel": "cuuhovien",
+            "explain": "Duy ý chí nóng vội, vi phạm quy luật khách quan và gây xáo trộn nghiêm trọng đời sống nhân dân."
           },
           {
             "text": "Trích ngân sách nhà nước trợ cấp tiền mặt trực tiếp bù lỗ cho từng chiếc xe xuất xưởng mà không đòi hỏi tiêu chuẩn công nghệ",
@@ -74,12 +81,11 @@
             "explain": "Buông lỏng quản lý thị trường (tr.194), bóp nghẹt ngành công nghiệp chế tạo nội địa và biến đất nước thành bãi thải tiêu thụ phụ thuộc ngoại bang."
           },
           {
-            "text": "Dùng mệnh lệnh hành chính ép buộc cấm hoàn toàn xe xăng ngay trong tuần tới để bắt buộc người dân đổi sang xe điện",
-            "result": "backfire",
-            "danger": 40,
-            "calm": -35,
-            "minLevel": "cuuhovien",
-            "explain": "Duy ý chí nóng vội, vi phạm quy luật khách quan và gây xáo trộn nghiêm trọng đời sống nhân dân."
+            "text": "Ban hành Chiến lược Thể chế Xe điện Xanh: Miễn 100% lệ phí trước bạ, quy hoạch mạng lưới trạm sạc vào công trình thiết yếu công cộng, hỗ trợ R&D công nghệ pin và dựng hàng rào tiêu chuẩn kỹ thuật xanh",
+            "result": "super",
+            "danger": -60,
+            "calm": 25,
+            "explain": "Đúng định hướng giáo trình tr.191-192, 195: Thể chế KTTT định hướng XHCN chủ động kiến tạo thị trường mới, gắn kết tăng trưởng kinh tế với tự chủ công nghệ và phát triển xanh bền vững."
           }
         ]
       }
@@ -89,18 +95,22 @@
     "id": "scenario_tran_thanh_cinema",
     "title": "Chống độc quyền phòng vé và phát triển điện ảnh dân tộc",
     "npcName": "Đạo Diễn / MC Trấn Thành (1.500 Tỷ)",
-    "source": ["II.2.a.hoan-thien-the-che-ve-so", "II.2.b"],
+    "source": [
+      "II.2.a.hoan-thien-the-che-ve-so",
+      "II.2.b"
+    ],
     "danger": 100,
     "turns": [
       {
         "prompt": "Phim của tôi vượt mốc 1.500 tỷ doanh thu và được các cụm rạp xếp tới 75% suất chiếu giờ vàng. Nhiều người chỉ trích tôi chiếm sóng chèn ép các bộ phim lịch sử và phim độc lập. Với tư cách nhà điều hành thể chế, bạn giải quyết bài toán độc quyền này thế nào?",
         "options": [
           {
-            "text": "Hoàn thiện thể chế quản lý cạnh tranh điện ảnh: Khống chế tỷ lệ suất chiếu tối đa của một phim không quá 50% trong tuần đầu; trích 3% doanh thu phim thương mại lập Quỹ hỗ trợ phim độc lập và điện ảnh lịch sử dân tộc",
-            "result": "super",
-            "danger": -60,
-            "calm": 20,
-            "explain": "Đúng mục II.2.b giáo trình tr.193-194: Nhà nước kiểm soát độc quyền phân phối, bảo đảm cạnh tranh bình đẳng và bảo tồn giá trị văn hóa đa dạng của toàn xã hội."
+            "text": "Cấm hoàn toàn các bộ phim tư nhân có doanh thu cao để ép khán giả chỉ được xem các bộ phim quốc doanh",
+            "result": "backfire",
+            "danger": 50,
+            "calm": -35,
+            "minLevel": "cuuhovien",
+            "explain": "Vi phạm nghiêm trọng quyền tự do kinh doanh và quyền tự do lựa chọn tiêu dùng của người dân trong kinh tế thị trường."
           },
           {
             "text": "Kêu gọi các rạp chiếu phim tự nguyện thương lượng, bố trí thêm các suất chiếu đêm muộn cho các phim nghệ thuật",
@@ -110,19 +120,18 @@
             "explain": "Biện pháp khuyến khích tự nguyện không có tính chế tài, khó ngăn chặn được quy luật tối đa hóa lợi nhuận của các rạp tư nhân."
           },
           {
+            "text": "Hoàn thiện thể chế quản lý cạnh tranh điện ảnh: Khống chế tỷ lệ suất chiếu tối đa của một phim không quá 50% trong tuần đầu; trích 3% doanh thu phim thương mại lập Quỹ hỗ trợ phim độc lập và điện ảnh lịch sử dân tộc",
+            "result": "super",
+            "danger": -60,
+            "calm": 20,
+            "explain": "Đúng mục II.2.b giáo trình tr.193-194: Nhà nước kiểm soát độc quyền phân phối, bảo đảm cạnh tranh bình đẳng và bảo tồn giá trị văn hóa đa dạng của toàn xã hội."
+          },
+          {
             "text": "Để mặc thị trường tự do tuyệt đối, rạp nào bán được nhiều vé thì cứ chiếu 90% suất chiếu giờ vàng",
             "result": "backfire",
             "danger": 35,
             "calm": -25,
             "explain": "Dung dưỡng tư bản độc quyền thâu tóm thị trường, bóp chết sự sáng tạo đa dạng và văn hóa dân tộc."
-          },
-          {
-            "text": "Cấm hoàn toàn các bộ phim tư nhân có doanh thu cao để ép khán giả chỉ được xem các bộ phim quốc doanh",
-            "result": "backfire",
-            "danger": 50,
-            "calm": -35,
-            "minLevel": "cuuhovien",
-            "explain": "Vi phạm nghiêm trọng quyền tự do kinh doanh và quyền tự do lựa chọn tiêu dùng của người dân trong kinh tế thị trường."
           }
         ]
       }
@@ -132,25 +141,29 @@
     "id": "scenario_nathan_lee_copyright",
     "title": "Quyền liên quan của Producer và phân chia lợi ích bản phối",
     "npcName": "Producer K-ICM (Bảo Khánh)",
-    "source": ["II.2.a.hoan-thien-the-che-ve-so", "III.1.b.mot-so-quan-he-loi-ich"],
+    "source": [
+      "II.2.a.hoan-thien-the-che-ve-so",
+      "III.1.b.mot-so-quan-he-loi-ich"
+    ],
     "danger": 100,
     "turns": [
       {
         "prompt": "Tôi là người thức trắng đêm tạo nên bản phối, beat nhạc và đệm đàn tạo nên linh hồn cho loạt hit triệu view ('Sóng Gió', 'Bạc Phận'). Khi mâu thuẫn nổ ra, nhiều người cho rằng hòa âm chỉ là công việc làm thuê phụ và toàn bộ bản quyền thuộc về người viết lời. Bạn phân định thể chế thế nào về quyền lợi của Producer?",
         "options": [
           {
+            "text": "Tuyên bố bản phối hòa âm chỉ là dịch vụ gia công thông thường, tước bỏ mọi quyền tài sản và quyền đứng tên của Producer trên tác phẩm",
+            "result": "backfire",
+            "danger": 45,
+            "calm": -35,
+            "minLevel": "cuuhovien",
+            "explain": "Hạ thấp lao động sáng tạo phức tạp thành lao động giản đơn rẻ mạt, vi phạm quy luật giá trị và triệt tiêu động lực phát triển công nghệ sản xuất âm nhạc."
+          },
+          {
             "text": "Thể chế hóa quyền tác giả và quyền liên quan: Công nhận bản quyền giai điệu/lời của tác giả sáng tác, đồng thời bảo hộ quyền liên quan đối với bản ghi âm và hòa âm phối khí của Producer; phân chia doanh thu nhạc số theo tỷ lệ chuẩn hóa công bằng",
             "result": "super",
             "danger": -60,
             "calm": 20,
             "explain": "Đúng chuẩn mực mục II.2.a và III.1.b: Tôn trọng và bảo hộ đồng bộ quyền tác giả và quyền liên quan trong sở hữu trí tuệ, bảo đảm phân phối theo lao động và đóng góp sáng tạo."
-          },
-          {
-            "text": "Khuyên Producer nhận một khoản thù lao thỏa thuận một lần và từ bỏ mọi quyền liên quan đối với các lượt nghe phát sinh trên nền tảng số",
-            "result": "ok",
-            "danger": -15,
-            "calm": 5,
-            "explain": "Biện pháp trả tiền khoán một lần chưa phản ánh đúng giá trị thặng dư phát sinh lâu dài từ bản quyền số của tác phẩm."
           },
           {
             "text": "Cho phép Producer độc quyền nắm giữ toàn bộ bản master và cấm tuyệt đối tác giả biểu diễn ca khúc nếu không có sự đồng ý của Producer",
@@ -160,12 +173,11 @@
             "explain": "Lạm dụng quyền liên quan để phủ nhận quyền nhân thân và quyền tác giả nguyên gốc, xâm phạm lợi ích chính đáng của người sáng tạo."
           },
           {
-            "text": "Tuyên bố bản phối hòa âm chỉ là dịch vụ gia công thông thường, tước bỏ mọi quyền tài sản và quyền đứng tên của Producer trên tác phẩm",
-            "result": "backfire",
-            "danger": 45,
-            "calm": -35,
-            "minLevel": "cuuhovien",
-            "explain": "Hạ thấp lao động sáng tạo phức tạp thành lao động giản đơn rẻ mạt, vi phạm quy luật giá trị và triệt tiêu động lực phát triển công nghệ sản xuất âm nhạc."
+            "text": "Khuyên Producer nhận một khoản thù lao thỏa thuận một lần và từ bỏ mọi quyền liên quan đối với các lượt nghe phát sinh trên nền tảng số",
+            "result": "ok",
+            "danger": -15,
+            "calm": 5,
+            "explain": "Biện pháp trả tiền khoán một lần chưa phản ánh đúng giá trị thặng dư phát sinh lâu dài từ bản quyền số của tác phẩm."
           }
         ]
       }

@@ -71,6 +71,7 @@ export interface CharacterAppearance {
   mouthStyle: MouthStyle;
   accessory: AccessoryStyle;
   outfitColor?: string;
+  isCustomized?: boolean;
 }
 
 export const DEFAULT_APPEARANCE: CharacterAppearance = {

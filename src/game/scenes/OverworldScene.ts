@@ -187,6 +187,10 @@ export class OverworldScene extends Scene {
       this.handlePlayerUpdated();
     });
 
+    this.events.on(Phaser.Scenes.Events.RESUME, () => {
+      this.handlePlayerUpdated();
+    });
+
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
       this.scale.off('resize', this.applyCameraZoom, this);
       if (this.handleSaveEvent) {

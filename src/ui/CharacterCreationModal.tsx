@@ -240,6 +240,7 @@ export const CharacterCreationModal: React.FC<CharacterCreationModalProps> = ({
       baseSkin: arch.id,
       gender: arch.gender,
       outfitColor: arch.outfitColor,
+      isCustomized: false,
     }));
   };
 
@@ -268,6 +269,7 @@ export const CharacterCreationModal: React.FC<CharacterCreationModalProps> = ({
       eyeColor: randomEyeColor,
       mouthStyle: randomMouth,
       accessory: randomAcc,
+      isCustomized: true,
     });
     setName(randomNamePick);
     setError(null);

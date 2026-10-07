@@ -38,15 +38,49 @@ export const QuizPlay: React.FC<Props> = ({
 
   const [replayCount, setReplayCount] = useState(0);
 
-  // Rút ngẫu nhiên đúng 5 câu hỏi từ ngân hàng câu hỏi
+  // Rút ngẫu nhiên đúng 5 câu hỏi từ ngân hàng câu hỏi VÀ xáo trộn ngẫu nhiên các đáp án A B C D (không để full A)
   const questions: QuestionItem[] = useMemo(() => {
     const pool = [...levelData.questions];
-    // Fisher-Yates shuffle
+    // Fisher-Yates shuffle danh sách câu hỏi
     for (let i = pool.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [pool[i], pool[j]] = [pool[j], pool[i]];
     }
-    return pool.slice(0, 5);
+    const selected = pool.slice(0, 5);
+
+    // Xáo trộn ngẫu nhiên các phương án trả lời của từng câu
+    const processed: QuestionItem[] = selected.map((q) => {
+      const originalCorrect = q.options[q.answer];
+      const shuffledOptions = [...q.options];
+      for (let i = shuffledOptions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
+      }
+      const newAnswerIdx = shuffledOptions.indexOf(originalCorrect);
+      return {
+        ...q,
+        options: shuffledOptions,
+        answer: newAnswerIdx >= 0 ? newAnswerIdx : 0,
+      };
+    });
+
+    // Đảm bảo phân bổ đa dạng các đáp án A, B, C, D — tuyệt đối không để dồn full A
+    const countA = processed.filter((q) => q.answer === 0).length;
+    if (countA >= 3) {
+      // Đổi vị trí đáp án đúng của một số câu sang B (1), C (2), D (3)
+      processed.forEach((q, idx) => {
+        if (q.answer === 0 && idx > 0 && q.options.length > 1) {
+          const targetIndex = (idx % (q.options.length - 1)) + 1; // 1, 2, 3
+          // Đổi chỗ phương án 0 và targetIndex
+          const temp = q.options[0];
+          q.options[0] = q.options[targetIndex];
+          q.options[targetIndex] = temp;
+          q.answer = targetIndex;
+        }
+      });
+    }
+
+    return processed;
   }, [levelData, replayCount]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
