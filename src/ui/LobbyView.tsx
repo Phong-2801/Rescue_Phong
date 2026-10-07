@@ -171,12 +171,18 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
   };
 
   return (
-    <div className="relative w-full h-full bg-slate-950 overflow-hidden flex flex-col justify-between font-sans select-none">
+    <div
+      className="relative w-full h-full bg-slate-950 overflow-y-auto overflow-x-hidden flex flex-col justify-between font-sans select-none"
+      style={{
+        WebkitOverflowScrolling: 'touch',
+        touchAction: 'pan-y',
+      }}
+    >
       {/* ======================================================== */}
       {/* ẢNH NỀN KHÔNG GIAN ĐẠO ĐẦU PHONG CÁCH QUẢNG TRƯỜNG VIỆT NAM */}
       {/* (Lấy cảm hứng từ sân đấu Ninja Clash Heroes & Văn hóa Việt Nam) */}
       {/* ======================================================== */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 min-h-[620px] pointer-events-none overflow-hidden">
         {/* Bầu trời hoàng hôn tím hồng ấm áp */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#2a133d] via-[#431846] to-[#160d2b]" />
 
@@ -241,7 +247,14 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
       {/* ======================================================== */}
       {/* 1. THANH TIÊU ĐỀ TRÊN CÙNG (TOP HEADER HUD NHƯ ẢNH 1) */}
       {/* ======================================================== */}
-      <header className="relative z-30 px-3 sm:px-6 py-2 flex items-center justify-between gap-2 border-b border-amber-500/20 bg-slate-950/80 backdrop-blur-md">
+      <header
+        className="relative z-30 px-3 sm:px-6 py-2 flex items-center justify-between gap-2 border-b border-amber-500/20 bg-slate-950/80 backdrop-blur-md shrink-0"
+        style={{
+          paddingLeft: 'max(0.75rem, env(safe-area-inset-left))',
+          paddingRight: 'max(0.75rem, env(safe-area-inset-right))',
+          paddingTop: 'max(0.35rem, env(safe-area-inset-top))',
+        }}
+      >
         {/* NHÓM NÚT TRÁI: CÀI ĐẶT - BÁCH KHOA - HỒ SƠ (CÁC NÚT TRÒN ĐỎ NÂU Y HỆT ẢNH 1) */}
         <div className="flex items-center gap-1.5 sm:gap-2.5">
           {/* Nút Cài đặt (Bánh răng) */}
@@ -366,7 +379,7 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
       {/* ======================================================== */}
       {/* 2. KHU VỰC THÂN TRUNG TÂM: 3 CỘT (TRÁI - GIỮA - PHẢI) */}
       {/* ======================================================== */}
-      <main className="relative z-20 flex-1 w-full max-w-7xl mx-auto px-3 sm:px-6 py-2 flex items-center justify-between gap-4">
+      <main className="relative z-20 flex-1 w-full max-w-7xl mx-auto px-3 sm:px-6 py-2 flex items-center justify-between gap-3 sm:gap-4 shrink-0">
         {/* ---------------------------------------------------- */}
         {/* CỘT TRÁI: VŨ KHÍ LÝ LUẬN & CHỈ SỐ SINH TỒN (NHƯ ẢNH 1) */}
         {/* ---------------------------------------------------- */}
@@ -447,7 +460,7 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
             <div className="relative flex flex-col items-center">
               <PixelCharacterHero
                 appearance={progress.appearance}
-                size={180}
+                size={160}
                 playerName={progress.playerName}
                 showNameTag={true}
                 showShadow={true}
@@ -483,7 +496,14 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
       {/* ======================================================== */}
       {/* 3. THANH ĐIỀU KHIỂN DƯỚI CÙNG (BOTTOM HERO BAR NHƯ ẢNH 1) */}
       {/* ======================================================== */}
-      <footer className="relative z-30 px-3 sm:px-6 py-2.5 bg-slate-950/90 border-t border-amber-500/20 backdrop-blur-md flex flex-wrap items-center justify-between gap-3">
+      <footer
+        className="relative z-30 px-3 sm:px-6 py-2.5 bg-slate-950/90 border-t border-amber-500/20 backdrop-blur-md flex flex-wrap items-center justify-between gap-3 shrink-0"
+        style={{
+          paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))',
+          paddingLeft: 'max(0.75rem, env(safe-area-inset-left))',
+          paddingRight: 'max(0.75rem, env(safe-area-inset-right))',
+        }}
+      >
         {/* Phiên bản game góc trái dưới cùng (như v1.1.0 ở ảnh 1) */}
         <div className="hidden md:flex flex-col text-[10px] text-slate-400 font-mono">
           <span className="font-bold text-amber-400">v1.2.0 • KINH TẾ CHÍNH TRỊ VN • NHÓM 2</span>

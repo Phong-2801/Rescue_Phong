@@ -385,7 +385,7 @@ export const PixelCharacterHero: React.FC<PixelCharacterHeroProps> = ({
           ref={canvasRef}
           width={16}
           height={16}
-          className={`relative z-10 transition-transform ${
+          className={`relative z-10 pointer-events-none transition-transform ${
             animate ? 'animate-pulse hover:scale-105' : 'hover:scale-105'
           }`}
           style={{
